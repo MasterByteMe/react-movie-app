@@ -1,0 +1,238 @@
+/* Importing the "DM Sans" font from Google Fonts with specific options for italic and font weights */
+@import url("https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,100..1000;1,9..40,100..1000&display=swap");
+
+/* Importing the "Bebas Neue" font from Google Fonts, typically used for bold, large text */
+@import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
+
+/* Importing the Tailwind CSS framework for utility-based CSS styling */
+@import "tailwindcss";
+
+/* Defining custom theme variables for colors, fonts, breakpoints, and background image */
+@theme {
+  /* Primary color used throughout the website */
+  --color-primary: #030014;
+
+  /* Light color shades for different UI elements */
+  --color-light-100: #cecefb;
+  --color-light-200: #a8b5db;
+
+  /* Gray color for text and UI elements */
+  --color-gray-100: #9ca4ab;
+
+  /* Dark color for background or accents */
+  --color-dark-100: #0f0d23;
+
+  /* Custom font definition for "DM Sans" */
+  --font-dm-sans: DM Sans, sans-serif;
+
+  /* Defining a custom breakpoint for small screen sizes (xs) */
+  --breakpoint-xs: 480px;
+
+  /* Background image URL for the hero section */
+  --background-image-hero-pattern: url("/hero-bg.png");
+}
+
+/* The base layer that contains global styles for the website */
+@layer base {
+  /* Global styles for the body element */
+  body {
+    /* Applying the custom font "DM Sans" to the body */
+    font-family: "DM Sans", serif;
+
+    /* Automatically adjusting font size based on optical sizing */
+    font-optical-sizing: auto;
+
+    /* Setting a dark background color for the entire body */
+    background: #030014;
+  }
+
+  /* Styles for the h1 headers (main headings) */
+  h1 {
+    /* Tailwind utility classes to center the heading, set font size, line height, text color, etc. */
+    @apply mx-auto max-w-4xl text-center text-5xl font-bold leading-tight tracking-[-1%] text-white sm:text-[64px] sm:leading-[76px];
+  }
+
+  /* Styles for h2 headers (secondary headings) */
+  h2 {
+    /* Tailwind utility classes to set the font size, font weight, and text color */
+    @apply text-2xl font-bold text-white sm:text-3xl;
+  }
+
+  /* Styles for the main element (content area) */
+  main {
+    /* Tailwind utility classes to ensure the main section takes up full screen height and has a custom background color */
+    @apply min-h-screen relative bg-primary;
+  }
+
+  /* Styles for the header section */
+  header {
+    /* Margin-top settings to adjust spacing */
+    @apply sm:mt-10 mt-5;
+  }
+
+  /* Styles for images inside the header */
+  header img {
+    /* Setting the image to take full width, maintain aspect ratio, and center with a subtle drop shadow */
+    @apply w-full max-w-lg h-auto object-contain mx-auto drop-shadow-md;
+  }
+}
+
+/* Defining styles for various components (sections) of the page */
+@layer components {
+  /* A component that applies a full-screen background image */
+  .pattern {
+    /* Tailwind utilities to set the background pattern, position, and size */
+    @apply bg-hero-pattern w-screen h-screen bg-center bg-cover absolute z-0;
+  }
+
+  /* A wrapper class for sections with padding and max width */
+  .wrapper {
+    /* Setting padding, max width, and centering the content horizontally */
+    @apply px-5 py-12 xs:p-10 max-w-7xl mx-auto flex flex-col relative z-10;
+  }
+
+  /* Styles for a "Trending" section that displays items horizontally */
+  .trending {
+    /* Adding margin-top to space the section properly */
+    @apply mt-20;
+
+    /* Styling the unordered list (ul) within the trending section */
+    & ul {
+      /* Making the list horizontal and allowing overflow scrolling for items */
+      @apply flex flex-row overflow-y-auto gap-5 -mt-10 w-full hide-scrollbar;
+    }
+
+    /* Styling list items (li) within the trending section */
+    & ul li {
+      /* Making each list item have a minimum width and flex row layout */
+      @apply min-w-[230px] flex flex-row items-center;
+    }
+
+    /* Styling the paragraph (p) inside each list item */
+    & ul li p {
+      /* Applying the custom "fancy-text" class with specific text styling */
+      @apply fancy-text mt-[22px] text-nowrap;
+    }
+
+    /* Styling the image inside each list item */
+    & ul li img {
+      /* Setting the image size, round corners, and covering the specified size */
+      @apply w-[127px] h-[163px] rounded-lg object-cover -ml-3.5;
+    }
+  }
+
+  /* A search bar component with styling for the input field and icons */
+  .search {
+    /* Tailwind utility classes for the search bar’s appearance */
+    @apply w-full bg-light-100/5 px-4 py-3 rounded-lg mt-10 max-w-3xl mx-auto;
+
+    & div {
+      /* Flexbox for aligning the icon and input field within the search bar */
+      @apply relative flex items-center;
+    }
+
+    & img {
+      /* Positioning the search icon inside the input field */
+      @apply absolute left-2 h-5 w-5;
+    }
+
+    & input {
+      /* Tailwind utility classes to style the input field */
+      @apply w-full bg-transparent py-2 sm:pr-10 pl-10 text-base text-gray-200 placeholder-light-200 outline-hidden;
+    }
+  }
+
+  /* Styling for a section that displays all movies */
+  .all-movies {
+    /* Adding vertical space between movie cards */
+    @apply space-y-9;
+
+    & ul {
+      /* Using a grid layout for displaying movies in multiple columns */
+      @apply grid grid-cols-1 gap-5 xs:grid-cols-2 md:grid-cols-3 lg:grid-cols-4;
+    }
+  }
+
+  /* Styles for individual movie cards */
+  .movie-card {
+    /* Styling the card with background color, padding, rounded corners, and shadow effects */
+    @apply bg-dark-100 p-5 rounded-2xl shadow-inner shadow-light-100/10;
+
+    & img {
+      /* Ensuring the image fits within the card */
+      @apply rounded-lg h-auto w-full;
+    }
+
+    & h3 {
+      /* Styling the movie title */
+      @apply text-white font-bold text-base line-clamp-1;
+    }
+
+    & .content {
+      /* Adding margin and flex layout to align elements within the card */
+      @apply mt-2 flex flex-row items-center flex-wrap gap-2;
+    }
+
+    & .rating {
+      /* Flex layout for the movie rating */
+      @apply flex flex-row items-center gap-1;
+    }
+
+    & .rating img {
+      /* Controlling the size of the rating image */
+      @apply size-4 object-contain;
+    }
+
+    & .rating p {
+      /* Styling the rating text */
+      @apply font-bold text-base text-white;
+    }
+
+    & .content span {
+      /* Styling text within the content */
+      @apply text-sm text-gray-100;
+    }
+
+    & .content .lang {
+      /* Capitalizing and styling the language text */
+      @apply capitalize text-gray-100 font-medium text-base;
+    }
+
+    & .content .year {
+      /* Styling the year text */
+      @apply text-gray-100 font-medium text-base;
+    }
+  }
+}
+
+/* Utility class for applying a text gradient effect */
+@utility text-gradient {
+  /* Tailwind utility for background gradient on text */
+  @apply bg-linear-to-r from-[#D6C7FF] to-[#AB8BFF] bg-clip-text text-transparent;
+}
+
+/* Utility class for applying a fancy text style with a text stroke */
+@utility fancy-text {
+  /* Adding a text stroke effect and custom font size */
+  -webkit-text-stroke: 5px rgba(206, 206, 251, 0.5);
+
+  /* Setting an extremely large font size */
+  font-size: 190px;
+
+  /* Applying the "Bebas Neue" font */
+  font-family: "Bebas Neue", sans-serif;
+}
+
+/* Utility class for hiding the scrollbar */
+@utility hide-scrollbar {
+  /* For Internet Explorer (MS) */
+  -ms-overflow-style: none;
+
+  /* For Firefox */
+  scrollbar-width: none;
+
+  /* For Webkit browsers like Chrome and Safari */
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}

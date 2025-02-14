@@ -1,0 +1,56 @@
+/* Styles for the root container */
+#root {
+  max-width: 1280px; /* Sets the maximum width of the root container */
+  margin: 0 auto; /* Centers the container horizontally */
+  padding: 2rem; /* Adds padding around the content */
+  text-align: center; /* Aligns text to the center */
+}
+
+/* Styles for the logo */
+.logo {
+  height: 6em; /* Sets the height of the logo */
+  padding: 1.5em; /* Adds padding around the logo */
+  will-change: filter; /* Optimizes performance for filter transitions */
+  transition: filter 300ms; /* Smooth transition effect for the filter property */
+}
+
+/* Adds a glowing effect to the logo when hovered */
+.logo:hover {
+  filter: drop-shadow(
+    0 0 2em #646cffaa
+  ); /* Applies a drop-shadow effect with a bluish color */
+}
+
+/* Applies a different glowing effect when the logo has the 'react' class */
+.logo.react:hover {
+  filter: drop-shadow(
+    0 0 2em #61dafbaa
+  ); /* Uses React's signature blue color */
+}
+
+/* Defines the keyframes for a spinning animation */
+@keyframes logo-spin {
+  from {
+    transform: rotate(0deg); /* Starts rotation from 0 degrees */
+  }
+  to {
+    transform: rotate(360deg); /* Completes one full rotation */
+  }
+}
+
+/* Applies the spinning animation to the second anchor tag's logo when motion preference allows */
+@media (prefers-reduced-motion: no-preference) {
+  a:nth-of-type(2) .logo {
+    animation: logo-spin infinite 20s linear; /* Makes the logo spin indefinitely over 20 seconds */
+  }
+}
+
+/* Styles for a card container */
+.card {
+  padding: 2em; /* Adds padding inside the card */
+}
+
+/* Styles for the documentation text */
+.read-the-docs {
+  color: #888; /* Sets a neutral gray color for documentation links or text */
+}
