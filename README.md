@@ -158,3 +158,5 @@ const fetchMovies = async (searchQuery) => {
 };
 
 ```
+
+   <img src="/src/assets/movie-app.png" alt="Screenshot Movie App Page">
