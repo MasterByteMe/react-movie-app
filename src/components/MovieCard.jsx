@@ -40,13 +40,11 @@ const MovieCard = ({
           {/* Separator dot for better visual separation between details */}
           <span>•</span>
 
-          {/* Displays the original language of the movie */}
-          <p className="lang">
-            {original_language} // Shows the movie's language in abbreviated
-            form (e.g., "en", "fr")
-          </p>
+          {/* Displays the original language of the movie. 
+          Shows the movie's language in abbreviated example: en */}
 
-          {/* Another separator dot */}
+          <p className="lang">{original_language}</p>
+
           <span>•</span>
 
           {/* Displays the release year of the movie by extracting the year from the release_date */}
